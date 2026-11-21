@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Website pembelajaran tentang bentuk-bentuk perjuangan bangsa Indonesia melalui revolusi fisik untuk mempertahankan kemerdekaan.">
+<title>Revolusi Fisik | Jejak Perjuangan Indonesia</title>
+<style>
+:root{
+  --red:#a52b2b;--red-dark:#762020;--ink:#24231f;--muted:#6e6a61;
+  --paper:#f4efe4;--paper2:#fffaf0;--line:#ded5c5;--gold:#b28a4b;
+  --shadow:0 18px 50px rgba(48,35,20,.12)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(244,239,228,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:Arial,sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.navlinks{display:flex;gap:24px;font:600 .83rem Arial,sans-serif;color:#514b42}
+.navlinks a:hover{color:var(--red)}
+.menu-btn{display:none;border:1px solid var(--line);background:transparent;border-radius:8px;padding:7px 11px}
+.hero{min-height:600px;position:relative;overflow:hidden;display:flex;align-items:center;color:#fff;background:
+ radial-gradient(ellipse at 78% 28%,rgba(190,140,77,.30),transparent 32%),
+ linear-gradient(115deg,rgba(28,26,24,.96),rgba(67,37,31,.92)),
+ repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,255,255,.035) 40px)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(90deg,transparent 49.8%,#e8d8bb 50%,transparent 50.2%),linear-gradient(0deg,transparent 49.8%,#e8d8bb 50%,transparent 50.2%);background-size:86px 86px;mask-image:linear-gradient(90deg,transparent,#000)}
+.hero:after{content:"1945 — 1949";position:absolute;right:-18px;bottom:-62px;font:bold clamp(5rem,16vw,13rem)/1 Arial,sans-serif;letter-spacing:-.08em;color:rgba(255,255,255,.055);white-space:nowrap}
+.hero-inner{position:relative;z-index:1;max-width:1160px;width:100%;margin:auto;padding:90px 24px 110px}
+.eyebrow{font:700 .72rem Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#e1bd83}
+.hero h1{max-width:820px;margin:18px 0 22px;font-size:clamp(2.8rem,7vw,6.2rem);line-height:.99;letter-spacing:-.045em;font-weight:500}
+.hero h1 span{color:#e2b77d;font-style:italic}
+.hero p{max-width:620px;color:#e6ded2;font-size:1.08rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:3px;font:700 .82rem Arial,sans-serif;letter-spacing:.04em;transition:.2s}
+.btn-primary{background:#b83a32;color:#fff;border:1px solid #b83a32}
+.btn-primary:hover{background:#922b27;transform:translateY(-2px)}
+.btn-outline{border:1px solid rgba(255,255,255,.5);color:#fff}
+.btn-outline:hover{background:rgba(255,255,255,.1)}
+.hero-note{margin-top:54px;padding-top:16px;border-top:1px solid rgba(255,255,255,.22);max-width:480px;font: .75rem Arial,sans-serif;letter-spacing:.08em;color:#d1c5b4;text-transform:uppercase}
+.wrap{max-width:1160px;margin:auto;padding:0 24px}
+.intro{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;padding:92px 0 78px;align-items:start}
+.section-kicker{font:700 .72rem Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.08;font-weight:500;letter-spacing:-.035em;margin:12px 0 20px}
+.intro p{margin:0;color:#59554e;font-size:1.08rem}
+.quote{border-left:3px solid var(--gold);padding:6px 0 6px 24px;color:#51483d;font-size:1.35rem;font-style:italic}
+.quote small{display:block;margin-top:14px;font:700 .7rem Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.section-head p{max-width:430px;color:var(--muted);margin:0}
+.events{padding:76px 0 90px;background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.filterbar{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0}
+.filter{border:1px solid var(--line);background:transparent;color:#5e584e;border-radius:30px;padding:8px 14px;font:700 .75rem Arial,sans-serif;cursor:pointer}
+.filter.active,.filter:hover{background:var(--red);border-color:var(--red);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.event-card{background:#fffdf8;border:1px solid var(--line);padding:24px;min-height:250px;display:flex;flex-direction:column;transition:.25s;position:relative;overflow:hidden}
+.event-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c6ad8b}
+.event-card.featured{background:#342b27;color:#fff;border-color:#342b27}
+.event-card.featured:after{content:"";position:absolute;width:150px;height:150px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-48px;top:-55px;box-shadow:0 0 0 18px rgba(255,255,255,.035),0 0 0 38px rgba(255,255,255,.025)}
+.card-no{font:700 .68rem Arial,sans-serif;letter-spacing:.15em;color:var(--red);text-transform:uppercase}
+.featured .card-no{color:#e6bd83}
+.event-card h3{font-size:1.48rem;line-height:1.15;font-weight:500;margin:16px 0 8px;position:relative;z-index:1}
+.date{font:700 .73rem Arial,sans-serif;letter-spacing:.04em;color:var(--gold);margin-bottom:12px}
+.event-card p{font-size:.94rem;color:#686158;margin:0 0 18px}
+.featured p{color:#ded5ca}
+.card-link{margin-top:auto;align-self:flex-start;border:0;background:none;padding:0;color:var(--red);font:700 .76rem Arial,sans-serif;cursor:pointer}
+.featured .card-link{color:#edc98f}
+.timeline-section{padding:90px 0}
+.timeline{position:relative;max-width:850px;margin:42px auto 0;padding-left:34px}
+.timeline:before{content:"";position:absolute;left:8px;top:5px;bottom:5px;width:1px;background:#cbb99d}
+.time-item{position:relative;padding:0 0 28px 24px}
+.time-item:before{content:"";position:absolute;left:-31px;top:8px;width:11px;height:11px;background:var(--red);border:3px solid var(--paper);border-radius:50%;box-shadow:0 0 0 1px var(--red)}
+.time-item strong{display:block;font:700 .75rem Arial,sans-serif;letter-spacing:.08em;color:var(--red);margin-bottom:4px}
+.time-item span{font-size:1.12rem}
+.bandung{background:#312a26;color:#f7f0e4;padding:86px 0;position:relative;overflow:hidden}
+.bandung:after{content:"BANDUNG";position:absolute;right:-20px;bottom:-70px;font:bold clamp(5rem,17vw,14rem)/1 Arial,sans-serif;color:rgba(255,255,255,.045);letter-spacing:-.08em}
+.bandung-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.bandung .section-kicker{color:#e2b77d}
+.bandung h2{font-size:clamp(2.6rem,5vw,4.8rem)}
+.bandung p{color:#ded5ca}
+.bandung .date{color:#e2b77d}
+.fact-box{border:1px solid rgba(255,255,255,.22);padding:28px;background:rgba(255,255,255,.045)}
+.fact-box h3{font-weight:500;font-size:1.5rem;margin:0 0 12px}
+.fact-box ul{padding-left:18px;color:#ded5ca;margin:0}
+.fact-box li{margin:9px 0}
+.closing{padding:90px 0;text-align:center}
+.closing h2{max-width:760px;margin:14px auto}
+.closing p{max-width:700px;margin:0 auto;color:var(--muted)}
+.footer{background:#211f1c;color:#cfc5b8;padding:25px 24px;text-align:center;font: .72rem Arial,sans-serif;letter-spacing:.05em}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(20,18,16,.72);display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-panel{max-width:560px;width:100%;background:var(--paper2);padding:34px;position:relative;box-shadow:var(--shadow)}
+.modal-panel h3{font-size:2rem;line-height:1.1;margin:10px 0}
+.modal-panel p{color:#625c52}
+.close{position:absolute;right:14px;top:12px;border:0;background:transparent;font-size:1.6rem;cursor:pointer;color:#625c52}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:800px){
+ .navlinks{display:none;position:absolute;top:58px;left:0;right:0;background:var(--paper);padding:18px 24px;border-bottom:1px solid var(--line);flex-direction:column;gap:14px}
+ .navlinks.show{display:flex}.menu-btn{display:block}
+ .intro,.bandung-grid{grid-template-columns:1fr;gap:28px}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .hero{min-height:550px}
+}
+@media(max-width:560px){
+ .cards{grid-template-columns:1fr}
+ .hero-inner{padding-top:72px}
+ .section-head{display:block}
+ .section-head p{margin-top:12px}
+ .intro{padding:66px 0}
+ .events,.timeline-section,.closing{padding:65px 0}
+ .bandung{padding:68px 0}
+ .event-card{min-height:220px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="#beranda">Jejak Kemerdekaan</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#pengantar">Pengantar</a><a href="#peristiwa">Peristiwa</a><a href="#linimasa">Linimasa</a><a href="#bandung">Bandung Lautan Api</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="beranda">
+  <div class="hero-inner">
+    <div class="eyebrow">Sejarah Indonesia • 1945–1949</div>
+    <h1>Bentuk-Bentuk Perjuangan Melalui <span>Revolusi Fisik</span></h1>
+    <p>Menelusuri berbagai peristiwa perlawanan rakyat Indonesia dalam mempertahankan kemerdekaan dari ancaman kembalinya kekuasaan asing.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#peristiwa">Jelajahi Peristiwa</a>
+      <a class="btn btn-outline" href="#bandung">Sorotan: Bandung Lautan Api</a>
+    </div>
+    <div class="hero-note">Satu bangsa · Beragam medan perjuangan · Satu tujuan: kemerdekaan</div>
+  </div>
+</section>
+
+<div class="wrap">
+<section class="intro reveal" id="pengantar">
+  <div>
+    <div class="section-kicker">01 / Pengantar</div>
+    <h2>Mempertahankan kemerdekaan bukanlah perjuangan yang mudah.</h2>
+  </div>
+  <div>
+    <p>Setelah Proklamasi Kemerdekaan pada 17 Agustus 1945, bangsa Indonesia masih harus menghadapi berbagai ancaman terhadap kedaulatannya. Di berbagai daerah, rakyat bersama para pejuang melakukan perlawanan secara langsung untuk mempertahankan kemerdekaan.</p>
+    <div class="quote">“Kemerdekaan dipertahankan melalui keberanian, persatuan, dan pengorbanan seluruh rakyat.”<small>Semangat perjuangan bangsa Indonesia</small></div>
+  </div>
+</section>
+</div>
+
+<section class="events" id="peristiwa">
+ <div class="wrap">
+  <div class="section-head reveal">
+    <div><div class="section-kicker">02 / Catatan Perjuangan</div><h2>Peristiwa-Peristiwa Penting</h2></div>
+    <p>Pilih salah satu peristiwa untuk membaca ringkasan perjuangannya. Setiap daerah memiliki kisah dan semangat perlawanan tersendiri.</p>
+  </div>
+  <div class="filterbar reveal" aria-label="Filter peristiwa">
+    <button class="filter active" data-filter="all">Semua Peristiwa</button>
+    <button class="filter" data-filter="1945">1945</button>
+    <button class="filter" data-filter="1946">1946</button>
+    <button class="filter" data-filter="1947">1947</button>
+    <button class="filter" data-filter="1948">1948</button>
+  </div>
+  <div class="cards" id="cards">
+    <article class="event-card reveal" data-year="1945">
+      <div class="card-no">01 / Jawa Timur</div><h3>Pertempuran Surabaya</h3><div class="date">10 November 1945</div>
+      <p>Perlawanan rakyat Surabaya terhadap pasukan Sekutu. Peristiwa ini kemudian diperingati setiap tahun sebagai Hari Pahlawan.</p>
+      <button class="card-link" data-title="Pertempuran Surabaya" data-date="10 November 1945" data-desc="Rakyat Surabaya melakukan perlawanan terhadap pasukan Sekutu. Peristiwa ini menjadi salah satu simbol keberanian rakyat dalam mempertahankan kemerdekaan dan diperingati sebagai Hari Pahlawan.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1945">
+      <div class="card-no">02 / Jawa Tengah</div><h3>Pertempuran Ambarawa</h3><div class="date">20 November–15 Desember 1945</div>
+      <p>Perjuangan TKR bersama rakyat melawan pasukan Sekutu di wilayah Ambarawa, Jawa Tengah.</p>
+      <button class="card-link" data-title="Pertempuran Ambarawa" data-date="20 November–15 Desember 1945" data-desc="TKR bersama rakyat berjuang melawan pasukan Sekutu di Ambarawa, Jawa Tengah. Pertempuran ini menunjukkan kerja sama antara tentara dan rakyat dalam mempertahankan kemerdekaan.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1945">
+      <div class="card-no">03 / Sumatra Utara</div><h3>Pertempuran Medan Area</h3><div class="date">13 Oktober 1945</div>
+      <p>Perlawanan rakyat Medan terhadap kedatangan pasukan Sekutu dan NICA.</p>
+      <button class="card-link" data-title="Pertempuran Medan Area" data-date="13 Oktober 1945" data-desc="Rakyat Medan melakukan perlawanan terhadap kedatangan pasukan Sekutu dan NICA. Peristiwa ini menjadi bagian dari perjuangan mempertahankan kemerdekaan di Sumatra Utara.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1945">
+      <div class="card-no">04 / Jawa Tengah</div><h3>Pertempuran Lima Hari di Semarang</h3><div class="date">15–19 Oktober 1945</div>
+      <p>Perlawanan pemuda dan rakyat Semarang terhadap tentara Jepang.</p>
+      <button class="card-link" data-title="Pertempuran Lima Hari di Semarang" data-date="15–19 Oktober 1945" data-desc="Pemuda dan rakyat Semarang melakukan perlawanan terhadap tentara Jepang. Peristiwa ini menjadi salah satu catatan penting perjuangan rakyat di Jawa Tengah setelah proklamasi.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card featured reveal" data-year="1946">
+      <div class="card-no">05 / Jawa Barat · Sorotan Utama</div><h3>Bandung Lautan Api</h3><div class="date">23–24 Maret 1946</div>
+      <p>Pembumihangusan sebagian wilayah Bandung oleh pejuang Indonesia agar tidak dimanfaatkan oleh Sekutu dan NICA.</p>
+      <button class="card-link" data-title="Bandung Lautan Api" data-date="23–24 Maret 1946" data-desc="Bandung Lautan Api merupakan peristiwa pembumihangusan sebagian wilayah Bandung oleh pejuang Indonesia pada 23–24 Maret 1946. Tindakan tersebut dilakukan agar wilayah dan fasilitas yang ditinggalkan tidak dimanfaatkan oleh Sekutu dan NICA.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1946">
+      <div class="card-no">06 / Bali</div><h3>Pertempuran Puputan Margarana</h3><div class="date">20 November 1946</div>
+      <p>Perlawanan pasukan I Gusti Ngurah Rai di Bali terhadap Belanda.</p>
+      <button class="card-link" data-title="Pertempuran Puputan Margarana" data-date="20 November 1946" data-desc="Pasukan yang dipimpin I Gusti Ngurah Rai melakukan perlawanan terhadap Belanda di Bali. Peristiwa Puputan Margarana dikenang sebagai simbol keberanian dan pengorbanan dalam mempertahankan kemerdekaan.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1945">
+      <div class="card-no">07 / Jawa Barat</div><h3>Pertempuran Bojong Kokosan</h3><div class="date">9 Desember 1945</div>
+      <p>Perlawanan pejuang Indonesia terhadap pasukan Sekutu di Sukabumi.</p>
+      <button class="card-link" data-title="Pertempuran Bojong Kokosan" data-date="9 Desember 1945" data-desc="Pejuang Indonesia melakukan perlawanan terhadap pasukan Sekutu di kawasan Bojong Kokosan, Sukabumi. Peristiwa ini menjadi bagian dari perjuangan rakyat Jawa Barat.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1947">
+      <div class="card-no">08 / Berbagai Daerah</div><h3>Agresi Militer Belanda I</h3><div class="date">21 Juli 1947</div>
+      <p>Serangan militer Belanda terhadap wilayah Republik Indonesia.</p>
+      <button class="card-link" data-title="Agresi Militer Belanda I" data-date="21 Juli 1947" data-desc="Belanda melancarkan serangan militer terhadap wilayah Republik Indonesia. Serangan ini menjadi salah satu ancaman besar terhadap kedaulatan Indonesia setelah kemerdekaan diproklamasikan.">Baca ringkasan ↗</button>
+    </article>
+    <article class="event-card reveal" data-year="1948">
+      <div class="card-no">09 / Yogyakarta</div><h3>Agresi Militer Belanda II</h3><div class="date">19 Desember 1948</div>
+      <p>Serangan Belanda ke Yogyakarta, yang saat itu menjadi ibu kota Republik Indonesia.</p>
+      <button class="card-link" data-title="Agresi Militer Belanda II" data-date="19 Desember 1948" data-desc="Belanda melancarkan serangan ke Yogyakarta, yang saat itu menjadi ibu kota Republik Indonesia. Peristiwa ini kembali menguji perjuangan bangsa Indonesia dalam mempertahankan kemerdekaan dan kedaulatan negara.">Baca ringkasan ↗</button>
+    </article>
+  </div>
+ </div>
+</section>
+
+<section class="timeline-section" id="linimasa">
+ <div class="wrap">
+  <div class="section-head reveal">
+    <div><div class="section-kicker">03 / Urutan Waktu</div><h2>Linimasa Perjuangan</h2></div>
+    <p>Rangkaian peristiwa dari tahun 1945 hingga 1948 memperlihatkan bahwa perjuangan mempertahankan kemerdekaan berlangsung di berbagai wilayah Indonesia.</p>
+  </div>
+  <div class="timeline">
+    <div class="time-item reveal"><strong>13 OKTOBER 1945</strong><span>Pertempuran Medan Area</span></div>
+    <div class="time-item reveal"><strong>15–19 OKTOBER 1945</strong><span>Pertempuran Lima Hari di Semarang</span></div>
+    <div class="time-item reveal"><strong>20 NOVEMBER–15 DESEMBER 1945</strong><span>Pertempuran Ambarawa</span></div>
+    <div class="time-item reveal"><strong>10 NOVEMBER 1945</strong><span>Pertempuran Surabaya</span></div>
+    <div class="time-item reveal"><strong>9 DESEMBER 1945</strong><span>Pertempuran Bojong Kokosan</span></div>
+    <div class="time-item reveal"><strong>23–24 MARET 1946</strong><span>Bandung Lautan Api</span></div>
+    <div class="time-item reveal"><strong>20 NOVEMBER 1946</strong><span>Pertempuran Puputan Margarana</span></div>
+    <div class="time-item reveal"><strong>21 JULI 1947</strong><span>Agresi Militer Belanda I</span></div>
+    <div class="time-item reveal"><strong>19 DESEMBER 1948</strong><span>Agresi Militer Belanda II</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="bandung" id="bandung">
+ <div class="wrap bandung-grid">
+  <div class="reveal">
+    <div class="section-kicker">Sorotan Peristiwa · 23–24 Maret 1946</div>
+    <h2>Bandung<br><em>Lautan Api</em></h2>
+    <div class="date">BANDUNG, JAWA BARAT</div>
+    <p>Bandung Lautan Api merupakan salah satu peristiwa penting dalam perjuangan mempertahankan kemerdekaan Indonesia. Para pejuang Indonesia membumihanguskan sebagian wilayah Bandung agar tidak dapat dimanfaatkan oleh Sekutu dan NICA.</p>
+    <p>Peristiwa ini memperlihatkan bahwa mempertahankan kemerdekaan membutuhkan keberanian, persatuan, dan pengorbanan besar dari rakyat.</p>
+  </div>
+  <aside class="fact-box reveal">
+    <h3>Mengapa peristiwa ini penting?</h3>
+    <ul>
+      <li>Menjadi bukti perlawanan rakyat dalam mempertahankan kemerdekaan.</li>
+      <li>Menunjukkan semangat persatuan antara pejuang dan masyarakat.</li>
+      <li>Menggambarkan pengorbanan besar demi menjaga kedaulatan Indonesia.</li>
+    </ul>
+  </aside>
+ </div>
+</section>
+
+<section class="closing">
+ <div class="wrap reveal">
+  <div class="section-kicker">04 / Penutup</div>
+  <h2>Perjuangan mereka menjadi bagian dari sejarah kemerdekaan Indonesia.</h2>
+  <p>Peristiwa-peristiwa tersebut menunjukkan bahwa rakyat Indonesia tidak tinggal diam ketika kemerdekaannya terancam. Dari berbagai daerah, muncul keberanian dan semangat untuk mempertahankan kemerdekaan yang telah diperjuangkan.</p>
+ </div>
+</section>
+</main>
+
+<footer class="footer">JEJAK PERJUANGAN INDONESIA · MEDIA PEMBELAJARAN SEJARAH</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-panel">
+  <button class="close" id="closeModal" aria-label="Tutup">×</button>
+  <div class="section-kicker" id="modalDate"></div>
+  <h3 id="modalTitle"></h3>
+  <p id="modalDesc"></p>
+ </div>
+</div>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const navlinks=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>navlinks.classList.toggle('show'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('show')));
+
+document.querySelectorAll('.filter').forEach(button=>{
+  button.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    button.classList.add('active');
+    const year=button.dataset.filter;
+    document.querySelectorAll('.event-card').forEach(card=>{
+      card.style.display=(year==='all'||card.dataset.year===year)?'flex':'none';
+    });
+  });
+});
+
+const modal=document.getElementById('modal');
+document.querySelectorAll('.card-link').forEach(button=>{
+  button.addEventListener('click',()=>{
+    document.getElementById('modalTitle').textContent=button.dataset.title;
+    document.getElementById('modalDate').textContent=button.dataset.date;
+    document.getElementById('modalDesc').textContent=button.dataset.desc;
+    modal.classList.add('open');
+  });
+});
+function closeModal(){modal.classList.remove('open')}
+document.getElementById('closeModal').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
